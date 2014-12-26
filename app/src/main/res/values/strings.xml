@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BTApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_camera">CameraActivity</string>
+    <string name="select_device">Selecciona Dispositivo</string>
+    <string name="none_found">Ningún dispositivo bluetooth encontrado</string>
+    <string name="scanning">Buscando dispositivos bluetooth </string>
+    <string name="none_paired">No se ha vinculado dispositivo</string>
+    <string name="title_paired_devices">Dispositivos vinculados</string>
+    <string name="title_other_devices">Otros dispositivos disponibles</string>
+    <string name="button_scan">Buscar dispositivos</string>
+    <string name="title_activity_device_list">DeviceListActivity</string>
+
+</resources>
