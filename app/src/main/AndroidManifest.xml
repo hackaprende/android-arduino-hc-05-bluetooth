@@ -45,6 +45,8 @@
             android:name=".DeviceListActivity"
             android:label="@string/title_activity_device_list" >
         </activity>
+
+        <service android:name=".GetMacService" />
     </application>
 
 </manifest>

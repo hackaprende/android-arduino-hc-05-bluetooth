@@ -4,18 +4,19 @@ import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import java.util.Set;
 import java.util.UUID;
 
 public class MainActivity extends Activity {
+
+    public static final String SAVED_MAC = "Saved mac";
+    public static final String MY_PREFS = "My Preferences";
 
     // Message types sent from the BluetoothChatService Handler
     public static final int MESSAGE_STATE_CHANGE = 1;
@@ -34,53 +35,48 @@ public class MainActivity extends Activity {
 
     BTService mBTService;
 
-    private final static UUID MY_UUID = UUID.randomUUID();
+    private String macToSave;
 
-    ListView devicesList;
+    private final static UUID MY_UUID = UUID.randomUUID();
 
     BluetoothAdapter mBluetoothAdapter;
 
-    ArrayAdapter<String> mArrayAdapter;
+    private TextView macText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
-        devicesList = (ListView) findViewById(R.id.devices_list);
+        SharedPreferences settings = getSharedPreferences(MY_PREFS, 0);
+        macToSave = settings.getString(SAVED_MAC, "");
+
+
+        macText = (TextView) findViewById(R.id.mac_text);
+
+        macText.setText(macToSave);
+
+        Log.d("APP","APP INICIADA: " + macToSave);
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        if(mBluetoothAdapter == null){
-            Toast.makeText(this, "Bluetooth no soportado", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(this,"Bluetooth soportado",Toast.LENGTH_SHORT).show();
-            if (!mBluetoothAdapter.isEnabled()) {
-                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-            }
-            Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
-            if (pairedDevices.size() > 0) {
-                for (BluetoothDevice device : pairedDevices) {
-                    mArrayAdapter.add(device.getName() + "\n" + device.getAddress());
-                }
-            }
-            devicesList.setAdapter(mArrayAdapter);
-        }
 
         MyApp myApplication = (MyApp) this.getApplicationContext();
         myApplication.mainActivity = this;
 
-        IntentFilter buttonFilter = new IntentFilter(Intent.ACTION_MEDIA_BUTTON);
+        /*IntentFilter buttonFilter = new IntentFilter(Intent.ACTION_MEDIA_BUTTON);
         MediaButtonIntentReceiver mediaButtonIntentReceiver = new MediaButtonIntentReceiver();
         buttonFilter.setPriority(2147483647);
-        registerReceiver(mediaButtonIntentReceiver,buttonFilter);
+        registerReceiver(mediaButtonIntentReceiver,buttonFilter);*/
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        if (!mBluetoothAdapter.isEnabled()) {
+            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableIntent, REQUEST_ENABLE_BT);
+            // Otherwise, setup the chat session
+        }
     }
 
     @Override
@@ -92,6 +88,12 @@ public class MainActivity extends Activity {
         if (requestCode == REQUEST_CONNECT_DEVICE_SECURE) {
             // When DeviceListActivity returns with a device to connect
             if (resultCode == Activity.RESULT_OK) {
+                String device = data.getStringExtra(DeviceListActivity.EXTRA_DEVICE_ADDRESS);
+                SharedPreferences settings = getSharedPreferences(MY_PREFS, 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString(SAVED_MAC, device);
+                editor.apply();
+                macText.setText(device);
                 connectDevice(data, true);
             }
         }
@@ -103,7 +105,7 @@ public class MainActivity extends Activity {
         // Get the BluetoothDevice object
         BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(address);
         // Attempt to connect to the device
-        mBTService.connect(device, secure);
+        //mBTService.connect(device, secure);
     }
 
     @Override

@@ -7,7 +7,7 @@
     <string name="title_activity_camera">CameraActivity</string>
     <string name="select_device">Selecciona Dispositivo</string>
     <string name="none_found">Ningún dispositivo bluetooth encontrado</string>
-    <string name="scanning">Buscando dispositivos bluetooth </string>
+    <string name="scanning">Buscando dispositivos bluetooth&#8230; </string>
     <string name="none_paired">No se ha vinculado dispositivo</string>
     <string name="title_paired_devices">Dispositivos vinculados</string>
     <string name="title_other_devices">Otros dispositivos disponibles</string>
