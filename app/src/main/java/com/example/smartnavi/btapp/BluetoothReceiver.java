@@ -23,11 +23,13 @@ public class BluetoothReceiver extends BroadcastReceiver {
 
             String device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE).toString();
             //"58:C3:8B:63:D4:39"
-            if(device.equals(savedMac)) {
+
+            /*if(device.equals(savedMac)){
                 Intent i = new Intent(context, MainActivity.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(i);
-            }
+            }*/
+
         } else if (BluetoothDevice.ACTION_BOND_STATE_CHANGED.equals(action)) {
             Toast.makeText(context, "HOLA COMPADRE", Toast.LENGTH_SHORT).show();
         }

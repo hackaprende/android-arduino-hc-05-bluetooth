@@ -265,8 +265,6 @@ public class BTService {
         }
 
         public void run() {
-            if (D) Log.d(TAG, "Socket Type: " + mSocketType +
-                    "BEGIN mAcceptThread" + this);
             setName("AcceptThread" + mSocketType);
 
             BluetoothSocket socket = null;

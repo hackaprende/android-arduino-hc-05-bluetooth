@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name=".MyApp"
@@ -46,7 +47,6 @@
             android:label="@string/title_activity_device_list" >
         </activity>
 
-        <service android:name=".GetMacService" />
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name">BTApp</string>
     <string name="hello_world">Hello world!</string>
@@ -13,5 +14,13 @@
     <string name="title_other_devices">Otros dispositivos disponibles</string>
     <string name="button_scan">Buscar dispositivos</string>
     <string name="title_activity_device_list">DeviceListActivity</string>
+
+    <!--  BluetoothChat -->
+    <string name="send">Send</string>
+    <string name="not_connected">You are not connected to a device</string>
+    <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving Bluetooth Chat.</string>
+    <string name="title_connecting">connecting&#8230;</string>
+    <string name="title_connected_to">connected to <xliff:g id="device_name">%1$s</xliff:g></string>
+    <string name="title_not_connected">not connected</string>
 
 </resources>
