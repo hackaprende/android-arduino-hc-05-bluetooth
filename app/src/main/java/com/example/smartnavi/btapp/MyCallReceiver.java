@@ -17,7 +17,7 @@ public class MyCallReceiver extends BroadcastReceiver {
 
             //if(incomingNumber.equals("6671422952")){
                 Toast.makeText(context,"Llamada entrante bato: " + incomingNumber, Toast.LENGTH_LONG).show();
-                mainActivity.sendMessage("Llamada entrante bato: " + incomingNumber);
+                //mainActivity.sendMessage("Llamada entrante bato: " + incomingNumber);
             //}
         }
         else if(intent.getStringExtra(TelephonyManager.EXTRA_STATE).equals(TelephonyManager.EXTRA_STATE_IDLE) || intent.getStringExtra(TelephonyManager.EXTRA_STATE).equals(TelephonyManager.EXTRA_STATE_OFFHOOK)){

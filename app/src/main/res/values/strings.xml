@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name">BTApp</string>
@@ -8,19 +7,29 @@
     <string name="title_activity_camera">CameraActivity</string>
     <string name="select_device">Selecciona Dispositivo</string>
     <string name="none_found">Ningún dispositivo bluetooth encontrado</string>
-    <string name="scanning">Buscando dispositivos bluetooth&#8230; </string>
+    <string name="scanning">Buscando dispositivos bluetooth… </string>
     <string name="none_paired">No se ha vinculado dispositivo</string>
     <string name="title_paired_devices">Dispositivos vinculados</string>
     <string name="title_other_devices">Otros dispositivos disponibles</string>
     <string name="button_scan">Buscar dispositivos</string>
     <string name="title_activity_device_list">DeviceListActivity</string>
 
-    <!--  BluetoothChat -->
+    <!-- BluetoothChat -->
     <string name="send">Send</string>
     <string name="not_connected">You are not connected to a device</string>
     <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving Bluetooth Chat.</string>
-    <string name="title_connecting">connecting&#8230;</string>
+    <string name="title_connecting">connecting…</string>
     <string name="title_connected_to">connected to <xliff:g id="device_name">%1$s</xliff:g></string>
     <string name="title_not_connected">not connected</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preferences-->
+    <string name="pref_number_1_label">Número 1</string>
+    <string name="pref_number_1_key" translatable = "false">Número 1</string>
+    <string name="pref_number_2_label">Número 2</string>
+    <string name="pref_number_2_key" translatable = "false">Número 2</string>
+    <string name="pref_number_3_label">Número 3</string>
+    <string name="pref_number_3_key" translatable = "false">Número 3</string>
+    <string name="pref_number_default">Inserte número frecuente</string>
 
 </resources>
